@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sean Amon | Security Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyber-green: #00ff41;
+            --matrix-green: #0fff50;
+            --terminal-black: #0a0a0a;
+            --hacker-red: #ff003c;
+            --cyber-blue: #00ccff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            color: var(--cyber-green);
+            font-family: 'Roboto Mono', monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .hero {
+            background: linear-gradient(135deg, #000, #0a0a0a);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 204, 255, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--cyber-green), var(--cyber-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+        }
+        
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--cyber-blue);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: rgba(0, 255, 65, 0.1);
+            border: 2px solid var(--cyber-green);
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin: 10px;
+            font-size: 0.9rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Projects */
+        .projects {
+            padding: 80px 0;
+            background: #0a0a0a;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--cyber-green);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyber-green), transparent);
+            animation: scanline 3s linear infinite;
+        }
+        
+        @keyframes scanline {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--cyber-green);
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);
+        }
+        
+        .project-card h3 {
+            color: var(--cyber-blue);
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .tech-tag {
+            background: rgba(0, 204, 255, 0.1);
+            color: var(--cyber-blue);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, var(--cyber-green), var(--cyber-blue));
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--cyber-green);
+            color: var(--cyber-green);
+        }
+        
+        /* Skills */
+        .skills {
+            padding: 80px 0;
+            background: #000;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background: rgba(20, 20, 20, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+        
+        .skill-category h3 {
+            color: var(--cyber-green);
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .skill-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--cyber-blue);
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            background: #0a0a0a;
+            text-align: center;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(0, 255, 65, 0.1);
+            border: 2px solid var(--cyber-green);
+            color: var(--cyber-green);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background: var(--cyber-green);
+            color: #000;
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 30px 0;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #333;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>SEAN AMON</h1>
+                <h2>OSCP Candidate | Junior Pentester | Security Researcher</h2>
+                
+                <div class="status-badges">
+                    <span class="status-badge">🎯 OSCP Preparation: 75% Complete</span>
+                    <span class="status-badge">🔍 Actively Seeking Junior Pentester Role</span>
+                    <span class="status-badge">🚀 Available Immediately</span>
+                </div>
+                
+                <p style="margin-top: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Building practical security tools and documenting my journey to becoming a professional penetration tester. 
+                    Currently preparing for OSCP certification with daily hands-on lab practice.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section class="projects">
+        <div class="container">
+            <h2 class="section-title">🛠️ SECURITY PROJECTS</h2>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <h3>Advanced Web Security Scanner</h3>
+                    <p>A professional-grade scanner that automates detection of OWASP Top 10 vulnerabilities with comprehensive reporting capabilities.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OWASP Top 10</span>
+                        <span class="tech-tag">Multi-threading</span>
+                        <span class="tech-tag">HTML/JSON Reports</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/seanamon/web-security-scanner" class="btn" target="_blank">View on GitHub</a>
+                        <a href="#demo1" class="btn-secondary">Live Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <h3>Automated Pentesting Framework</h3>
+                    <p>Modular framework for automated penetration testing following PTES methodology with professional reporting.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PTES</span>
+                        <span class="tech-tag">Modular Design</span>
+                        <span class="tech-tag">Risk Assessment</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/seanamon/pentesting-framework" class="btn" target="_blank">View on GitHub</a>
+                        <a href="#demo2" class="btn-secondary">Documentation</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <h3>CTF Challenge Solver</h3>
+                    <p>Collection of automated tools for solving common CTF challenges demonstrating problem-solving and security knowledge.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Cryptography</span>
+                        <span class="tech-tag">Steganography</span>
+                        <span class="tech-tag">Reverse Engineering</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/seanamon/ctf-solver" class="btn" target="_blank">View on GitHub</a>
+                        <a href="#demo3" class="btn-secondary">Write-ups</a>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <h3>Security Education Platform</h3>
+                    <p>Interactive learning platform for security concepts demonstrating teaching ability and deep understanding.</p>
+                    
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Interactive Labs</span>
+                        <span class="tech-tag">Progress Tracking</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/seanamon/security-education" class="btn" target="_blank">View on GitHub</a>
+                        <a href="#demo4" class="btn-secondary">Try Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section class="skills">
+        <div class="container">
+            <h2 class="section-title">🎯 TECHNICAL SKILLS</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Penetration Testing</h3>
+                    <ul class="skill-list">
+                        <li>OWASP Top 10 & Web Security Testing</li>
+                        <li>Network Penetration Testing</li>
+                        <li>Metasploit Framework & Exploit Development</li>
+                        <li>Burp Suite & Manual Web App Testing</li>
+                        <li>Privilege Escalation Techniques</li>
+                        <li>Active Directory Attack Vectors</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <ul class="skill-list">
+                        <li>Python (Security Tool Development)</li>
+                        <li>Bash/PowerShell Scripting</li>
+                        <li>Linux/Windows Administration</li>
+                        <li>Git & Version Control</li>
+                        <li>Docker & Container Security</li>
+                        <li>SIEM & Log Analysis (Splunk)</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Certifications & Education</h3>
+                    <ul class="skill-list">
+                        <li>OSCP Candidate (Exam: May 2026)</li>
+                        <li>Google Cybersecurity Professional Certificate</li>
+                        <li>IBM Metasploit Framework Certification</li>
+                        <li>300+ Hours Hands-on Lab Experience</li>
+                        <li>Daily CTF Practice (TryHackMe/HackTheBox)</li>
+                        <li>Continuous Security Research</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">📬 GET IN TOUCH</h2>
+            <p>Looking for a motivated Junior Pentester who combines technical skills with a passion for security?</p>
+            
+            <div class="contact-links">
+                <a href="mailto:seanamon56@gmail.com" class="contact-link">📧 Email Me</a>
+                <a href="https://github.com/seanamon" class="contact-link" target="_blank">💻 GitHub</a>
+                <a href="https://linkedin.com/in/seanamon" class="contact-link" target="_blank">💼 LinkedIn</a>
+                <a href="resume.pdf" class="contact-link" download>📄 Download Resume</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2024 Sean Amon | OSCP Candidate | Junior Pentester</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">This portfolio demonstrates practical security skills and project development capabilities.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate project cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Matrix-like text effect for hero
+            const heroText = document.querySelector('.hero h1');
+            const originalText = heroText.textContent;
+            let matrixInterval;
+            
+            function startMatrixEffect() {
+                let iterations = 0;
+                const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                
+                matrixInterval = setInterval(() => {
+                    heroText.textContent = heroText.textContent
+                        .split("")
+                        .map((letter, index) => {
+                            if (index < iterations) {
+                                return originalText[index];
+                            }
+                            return letters[Math.floor(Math.random() * 26)];
+                        })
+                        .join("");
+                    
+                    if (iterations >= originalText.length) {
+                        clearInterval(matrixInterval);
+                        setTimeout(() => {
+                            heroText.textContent = originalText;
+                        }, 2000);
+                    }
+                    
+                    iterations += 1 / 3;
+                }, 30);
+            }
+            
+            // Start effect when hero section is in view
+            const heroObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    setTimeout(startMatrixEffect, 1000);
+                    heroObserver.unobserve(entries[0].target);
+                }
+            }, { threshold: 0.5 });
+            
+            heroObserver.observe(document.querySelector('.hero'));
+        });
+    </script>
+</body>
+</html>
