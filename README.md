@@ -87,3 +87,6 @@ All projects in this portfolio are open source under the MIT License unless othe
 
 ---
 *This portfolio demonstrates practical security skills and project development capabilities suitable for Junior Pentester roles.*
+
+## 📄 Resume
+[View Live Resume](http://sean-amon-pentester.surge.sh/)
